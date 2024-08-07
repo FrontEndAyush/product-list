@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  font-family: "Red Hat Text", sans-serif;
+  background-color: #FCF8F5;
+}
