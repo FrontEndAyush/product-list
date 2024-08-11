@@ -5,6 +5,8 @@ function App() {
   let [data, setData] = useState([]);
   const [isTrue, setIsTrue] = useState(true);
 
+  const newIndexes = [];
+
   const [counter, setCounter] = useState(1);
   const [ind, setInd] = useState(null);
 
@@ -21,9 +23,12 @@ function App() {
   }
 
   function validation(index) {
-    setInd(index);
+    let indexes = "";
+    indexes += index;
+    console.log(indexes);
     setIsTrue((previouseValue) => !previouseValue);
   }
+
   useEffect(() => {
     dataRequest();
   }, []);
@@ -56,13 +61,10 @@ function App() {
 
               <div
                 className={`${
-                  isTrue == false && index == ind ? "block" : "hidden"
+                  isTrue == false && index == 234 ? "block" : "hidden"
                 }`}
               >
-                <button
-                 
-                  className="border   text-white  gap-9 bg-[#CF5630] duration-300 transition-all border-[#CF5630] flex rounded-full py-1 px-3 left-7 text-[15px] font-semibold  top-[174px]   absolute"
-                >
+                <button className="border   text-white  gap-9 bg-[#CF5630] duration-300 transition-all border-[#CF5630] flex rounded-full py-1 px-3 left-7 text-[15px] font-semibold  top-[174px]   absolute">
                   <img
                     src="/images/icon-decrement-quantity.svg"
                     className="border  rounded-full py-2 px-1"
