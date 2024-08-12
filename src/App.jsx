@@ -5,12 +5,11 @@ function App() {
   let [data, setData] = useState([]);
   const [isTrue, setIsTrue] = useState(true);
 
-  const newIndexes = [];
+  const [indexesArray, setindexesArray] = useState([]);
 
   const [counter, setCounter] = useState(1);
-  const [ind, setInd] = useState(null);
 
-  function decrementCounter() {
+  function decrementCounter(index) {
     if (counter > 1) {
       setCounter(counter - 1);
     }
@@ -23,9 +22,11 @@ function App() {
   }
 
   function validation(index) {
-    let indexes = "";
-    indexes += index;
-    console.log(indexes);
+    setindexesArray((previousIndexesArray) => {
+      return [...previousIndexesArray, index];
+    });
+
+    console.log(indexesArray);
     setIsTrue((previouseValue) => !previouseValue);
   }
 
@@ -61,7 +62,9 @@ function App() {
 
               <div
                 className={`${
-                  isTrue == false && index == 234 ? "block" : "hidden"
+                  isTrue == false && indexesArray.includes(index)
+                    ? "block"
+                    : "hidden"
                 }`}
               >
                 <button className="border   text-white  gap-9 bg-[#CF5630] duration-300 transition-all border-[#CF5630] flex rounded-full py-1 px-3 left-7 text-[15px] font-semibold  top-[174px]   absolute">
@@ -69,9 +72,9 @@ function App() {
                     src="/images/icon-decrement-quantity.svg"
                     className="border  rounded-full py-2 px-1"
                     alt=""
-                    onClick={decrementCounter}
+                    onClick={() => decrementCounter(index)}
                   />
-                  {counter}
+                  {indexesArray.includes(index) ? counter : 0}
                   <img
                     src="/images/icon-increment-quantity.svg"
                     className="border rounded-full py-1  px-1"
